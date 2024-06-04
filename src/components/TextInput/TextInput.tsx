@@ -1,16 +1,16 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { FocusEventHandler } from "react";
 import "./TextInput.css";
 
 interface TextInputProps {
-	value: string;
-	// setValue: Dispatch<SetStateAction<value>>;
+	name: string;
+	handleChange: FocusEventHandler<HTMLInputElement>;
 }
 
-function TextInput() {
+function TextInput({ name, handleChange }: TextInputProps) {
 	return (
 		<>
-			<label></label>
-			<input type="text" value={} placeholder={} onBlur={} onChange={} />
+			<label>{name}</label>
+			<input type="text" onBlur={handleChange} onChange={handleChange} />
 		</>
 	);
 }
