@@ -6,3 +6,9 @@ input {
 	border: solid black 1px;
 	border-radius: 5px;
 }
+
+.input {
+	display: flex;
+	flex-direction: column;
+	margin: 5px;
+}
