@@ -8,10 +8,13 @@ function App() {
 		<>
 			<h1>Contact Form</h1>
 			<form>
-				<TextInput name="First Name" handleChange={(e) => console.log(e)} />
-				<TextInput name="Last Name" handleChange={(e) => console.log(e)} />
-				<TextInput name="Email Address" handleChange={(e) => console.log(e)} />
-				<TextInput name="Message" handleChange={(e) => console.log(e)} />
+				<div className="row">
+					<TextInput type="text" name="First Name" handleChange={(e) => console.log(e)} />
+					<TextInput type="text" name="Last Name" handleChange={(e) => console.log(e)} />
+				</div>
+				<TextInput type="text" name="Email Address" handleChange={(e) => console.log(e)} />
+				<TextInput type="radio" name="Query Type" handleChange={(e) => console.log(e)} />
+				<TextInput type="text" name="Message" handleChange={(e) => console.log(e)} />
 				<Button text="Submit" />
 			</form>
 		</>
