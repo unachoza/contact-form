@@ -6,8 +6,8 @@ button {
 	width: 150px;
 	height: 50px;
 	color: white;
-	background-color: #61dafbaa;
-	border: solid #237288aa;
+	background-color: var(--green-600);
+	border: none;
 	font-size: 16px;
 	font-weight: 600;
 	cursor: pointer;

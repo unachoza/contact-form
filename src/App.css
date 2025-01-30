@@ -1,25 +1,29 @@
+:root {
+	--grey-900: #2a4144;
+	--grey-500: #86a2a5;
+	--white: #ffffff;
+	--green-600: #0c7d69;
+	--green-200: #e0f1e8;
+	--red-errors: #d73c3c;
+}
+
 #root {
 	max-width: 1280px;
 	margin: 0 auto;
 	padding: 2rem;
 }
 
-.logo {
-	height: 6em;
-	padding: 1.5em;
-	will-change: filter;
-	transition: filter 300ms;
+h1 {
+	color: var(--grey-900);
+	font-size: 2rem;
 }
-.logo:hover {
-	filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-	filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 form {
+	width: 55vw;
+	background-color: var(--white);
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
+	padding: 40px;
 }
 
 .row {
