@@ -1,31 +1,26 @@
-import { FocusEventHandler } from "react";
+import { ChangeEvent, FocusEventHandler } from "react";
+import { useState } from "react";
 import "./Form.css";
 
 interface TextInputProps {
 	id?: string;
 	name?: string;
 	type: string;
-	value?: string;
 	options?: string[];
-	handleChange: FocusEventHandler<HTMLInputElement>;
+	// handleChange: FocusEventHandler<HTMLInputElement>;
 }
 
-function TextInput({ name, type, options, handleChange }: TextInputProps) {
-	// if (options){
-	//     return (
-	//         options.map((option) => {
-	//             <input type="radio" id="html" name={name} value="HTML"/>
-	//               <label for="html">HTML</label>
-	//         })
-	//     )
-	// }
-
+function TextInput({ name, type }: TextInputProps) {
+	const [value, setValue] = useState("");
+	function handleChange(e: ChangeEvent<HTMLInputElement>) {
+		const newValue = e.target.value;
+		setValue(newValue);
+	}
 	return (
 		<div className="input">
-			{name && <label>{name}</label>}
-			<label htmlFor={name}></label>
-			<input type={type} onBlur={handleChange} onChange={handleChange} />
-			<div className="error">This field is required</div>
+			<label htmlFor={name}>{name}</label>
+			<input id={name} type={type} name={name} onBlur={handleChange} onChange={handleChange} value={value} />
+			<div className="error">This field is required</div> */
 		</div>
 	);
 }

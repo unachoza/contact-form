@@ -13,24 +13,27 @@ interface FormValues {
 }
 
 function App() {
-	let names = ["Charlie", "Alice", "Bob"];
-	console.log(names.sort());
+	const handleSubmit = (e: any) => {
+		e.preventdefault();
+		const formData = new FormData(e.currentTarget);
+		console.log(Object.fromEntries(formData));
+	};
 	return (
 		<>
-			<form>
+			<form method="POST" onSubmit={handleSubmit}>
 				<h1>Contact Us</h1>
 				<div className="row">
-					<TextInput type="text" name="First Name" handleChange={(e) => console.log(e)} />
-					<TextInput type="text" name="Last Name" handleChange={(e) => console.log(e)} />
+					<TextInput type="text" name="First Name" />
+					<TextInput type="text" name="Last Name" />
 				</div>
-				<TextInput type="text" name="Email Address" handleChange={(e) => console.log(e)} />
+				<TextInput type="text" name="Email Address" />
 				<div className="error">Please enter a valid email address</div>
 				<div className="error">This field is required</div>
 				<fieldset>
-					<TextInput type="radio" name="Query Type" id="general-enquiry" value="General Enquiry" handleChange={(e) => console.log(e)} />
-					<TextInput type="radio" name="Query Type" id="support-request" value="Support Request" handleChange={(e) => console.log(e)} />
+					<TextInput type="radio" name="Query Type" id="general-enquiry" value="General Enquiry" />
+					<TextInput type="radio" name="Query Type" id="support-request" value="Support Request" />
 				</fieldset>
-				<TextInput type="text" name="Message" handleChange={(e) => console.log(e)} />
+				<TextInput type="text" name="Message" />
 				<Button text="Submit" />
 			</form>
 		</>
