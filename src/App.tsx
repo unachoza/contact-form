@@ -1,39 +1,58 @@
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Button from "./components/Button/Button";
 import TextInput from "./components/Form/TextInput";
+import RadioInput from "./components/Form/RadioInput";
+import { FormValues } from "./types/types";
 import "./App.css";
 
-interface FormValues {
-	firstName: string;
-	lastName: string;
-	email: string;
-	queryType: string;
-	message: string;
-	consent: boolean;
-}
-
 function App() {
-	const handleSubmit = (e: any) => {
-		e.preventdefault();
+	const [formValues, setFormValues] = useState<FormValues>({
+		firstName: "",
+		lastName: "",
+		email: "",
+		queryType: "",
+		message: "",
+		consent: false,
+	});
+
+	useEffect(() => {
+		//handleKeyDown
+	})
+	const handleInput = (name: string, value: string) => {
+		setFormValues((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
+	
+	const validateForm = () => {
+		//loop through all values and check if they are required
+		// if (required && value !== "") {
+	}
+
+	const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+		e.preventDefault();
+		// validateForm()
 		const formData = new FormData(e.currentTarget);
 		console.log(Object.fromEntries(formData));
 	};
+
 	return (
 		<>
 			<form method="POST" onSubmit={handleSubmit}>
 				<h1>Contact Us</h1>
 				<div className="row">
-					<TextInput type="text" name="First Name" />
-					<TextInput type="text" name="Last Name" />
+					<TextInput name="firstName" handleInput={handleInput} value={formValues.firstName} />
+					<TextInput name="Last Name" handleInput={handleInput} value={formValues.lastName} />
 				</div>
-				<TextInput type="text" name="Email Address" />
+				<TextInput name="Email Address" handleInput={handleInput} value={formValues.email} />
 				<div className="error">Please enter a valid email address</div>
 				<div className="error">This field is required</div>
 				<fieldset>
-					<TextInput type="radio" name="Query Type" id="general-enquiry" value="General Enquiry" />
-					<TextInput type="radio" name="Query Type" id="support-request" value="Support Request" />
+					<RadioInput id="general" name="queryType" value="General Enquiry" />
+					<RadioInput id="support" name="queryType" value="Support Request" />
 				</fieldset>
-				<TextInput type="text" name="Message" />
+				<TextInput name="Message" handleInput={handleInput} value={formValues.message} />
 				<Button text="Submit" />
 			</form>
 		</>
