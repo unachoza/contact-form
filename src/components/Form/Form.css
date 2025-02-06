@@ -4,9 +4,29 @@ input {
 	width: 300px;
 	padding: 10px;
 	background-color: var(--white);
-	border: solid black 1px;
+	border: solid black 1.5px;
 	border-radius: 5px;
 	color: black;
+}
+
+input:hover {
+	cursor: pointer;
+	border: 1.5px solid var(--green-600);
+}
+
+span {
+	font-size: 12px;
+	padding: 3px;
+	color: red;
+	visibility: hidden;
+}
+
+input:user-invalid ~ span {
+	visibility: visible;
+}
+
+input:user-invalid {
+	border: 1px solid red;
 }
 
 .input {

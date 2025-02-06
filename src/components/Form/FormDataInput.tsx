@@ -1,30 +1,30 @@
-//@ts-nocheck
-import { ChangeEvent } from "react";
+import { ChangeEvent, ChangeEventHandler } from "react";
 import { useState } from "react";
 import "./Form.css";
 
 interface TextInputProps {
-	id?: string;
+	id: number;
+	type: string;
+	name: string;
 	label: string;
 	errorMessage: string;
-	onChange: (value: string) => void;
-	name?: string;
-	value?: string;
-	handleInput?: (name: string, value: string) => void;
+	pattern?: string;
 }
 
-const ExperimentalTextInput = ({ label, errorMessage, handleInput, onChange, id, ...inputProps }: TextInputProps) => {
-	const [focused, setFocused] = useState(false);
+const FormDataInput = ({ id, type, name, label, errorMessage, ...inputProps }: TextInputProps) => {
+	const [value, setValue] = useState("");
 
-	const handleFocus = (e) => {
-		setFocused(true);
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setValue(event.currentTarget.value);
 	};
 
 	return (
-		<div>
-			<label>{label}</label>
-			<input type="text" onChange={handleInput} onBlur={handleFocus} focused={focused.toString()} {...inputProps} />
+		<div className="input">
+			<label htmlFor={name}>{label}</label>
+			<input name={name} value={value} onChange={handleChange} {...inputProps} />
 			<span>{errorMessage}</span>
 		</div>
 	);
 };
+
+export default FormDataInput;
