@@ -9,9 +9,10 @@ interface TextInputProps {
 	label: string;
 	errorMessage: string;
 	pattern?: string;
+	halfSize?: boolean;
 }
 
-const FormDataInput = ({ id, name, label, errorMessage, ...inputProps }: TextInputProps) => {
+const FormDataInput = ({ id, name, label, errorMessage, halfSize, ...inputProps }: TextInputProps) => {
 	const [value, setValue] = useState("");
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +20,7 @@ const FormDataInput = ({ id, name, label, errorMessage, ...inputProps }: TextInp
 	};
 
 	return (
-		<div className="input">
+		<div className="input" style={halfSize ? { width: "48%" } : { width: "100%" }}>
 			<label htmlFor={name}>{label}</label>
 			<input name={name} value={value} onChange={handleChange} {...inputProps} />
 			<span className="error-message">{errorMessage}</span>
