@@ -8,13 +8,27 @@ input {
 	border-radius: 5px;
 	color: black;
 }
+textarea {
+	background-color: var(--white);
+	border: solid black 1.5px;
+	border-radius: 5px;
+	color: black;
+	padding: 10px;
+	margin: 10px 0px;
+}
 
-input:hover {
+.textarea-input {
+	display: flex;
+	flex-direction: column;
+}
+
+input:hover,
+input[type="radio"]:hover {
 	cursor: pointer;
 	border: 1.5px solid var(--green-600);
 }
 
-span {
+span.error-message {
 	font-size: 12px;
 	padding: 3px;
 	color: red;
@@ -33,4 +47,73 @@ input:user-invalid {
 	display: flex;
 	flex-direction: column;
 	margin: 5px;
+}
+
+/* remove default radio styles */
+input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.radio-input-container {
+	border: 1px solid var(--grey-500);
+	height: 50px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 300px;
+	margin-block: 1rem;
+	border-radius: 10px;
+	padding-left: 1.3rem;
+}
+
+.radio-input-container input:checked ~ span.radio-button {
+	background-color: var(--green-600);
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	border: 2px solid var(--green-600);
+}
+
+.radio-input-container label {
+	margin: 2rem;
+}
+
+span.radio-button {
+	height: 25px;
+	width: 25px;
+	border: solid 2px var(--grey-500);
+	visibility: visible;
+	border-radius: 50%;
+}
+
+/* checkbox */
+.checkbox-container {
+	display: flex;
+}
+input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+span.checkbox-check {
+	display: flex;
+	margin-right: 10px;
+	height: 25px;
+	width: 25px;
+	border: solid 2px var(--grey-500);
+	visibility: visible;
+}
+
+.checkbox-container input:checked ~ span.checkbox-check {
+	background-color: var(--green-600);
+	height: 15px;
+	width: 15px;
+	border: 2px solid var(--green-600);
 }
