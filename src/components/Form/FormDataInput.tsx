@@ -11,7 +11,7 @@ interface TextInputProps {
 	pattern?: string;
 }
 
-const FormDataInput = ({ id, type, name, label, errorMessage, ...inputProps }: TextInputProps) => {
+const FormDataInput = ({ id, name, label, errorMessage, ...inputProps }: TextInputProps) => {
 	const [value, setValue] = useState("");
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ const FormDataInput = ({ id, type, name, label, errorMessage, ...inputProps }: T
 		<div className="input">
 			<label htmlFor={name}>{label}</label>
 			<input name={name} value={value} onChange={handleChange} {...inputProps} />
-			<span>{errorMessage}</span>
+			<span className="error-message">{errorMessage}</span>
 		</div>
 	);
 };
