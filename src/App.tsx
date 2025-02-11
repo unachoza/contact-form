@@ -1,90 +1,67 @@
 import { FormEvent, useEffect, useState } from "react";
 import Button from "./components/Button/Button";
-import TextInput from "./components/Form/TextInput";
+import FormDataInput from "./components/Form/FormDataInput";
 import RadioInput from "./components/Form/RadioInput";
-import { FormValues } from "./types/types";
+import TextBoxInput from "./components/Form/TextBoxInput";
+import CheckboxInput from "./components/Form/CheckboxInput";
+import { formFields, FormFields } from "./types/types";
 import "./App.css";
 
-function App() {
-	const [formValues, setFormValues] = useState<FormValues>({
-		firstName: "",
-		lastName: "",
-		email: "",
-		queryType: "",
-		message: "",
-		consent: false,
-	});
+interface FormValues {
+	[firstName: string]: string;
+}
 
-	useEffect(() => {
-		//handleKeyDown
-	})
-	const handleInput = (name: string, value: string) => {
-		setFormValues((prev) => ({
-			...prev,
-			[name]: value,
-		}));
+const formValues = {
+	firstName: "",
+};
+
+const INITIAL_FORM_VALUES: FormValues = {
+	firstName: "",
+};
+
+const App = () => {
+	const [formValues, setFormValues] = useState<FormValues>(INITIAL_FORM_VALUES);
+
+	const handleChange = (e: { currentTarget: { name: string; value: string } }) => {
+		setFormValues({ ...formValues, [e.currentTarget.name]: e.currentTarget.value });
 	};
-	
-	const validateForm = () => {
-		//loop through all values and check if they are required
-		// if (required && value !== "") {
-	}
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-		e.preventDefault();
-		// validateForm()
-		const formData = new FormData(e.currentTarget);
-		console.log(Object.fromEntries(formData));
+	const handleFormField = (formFieldData: FormFields) => {
+		const { type, ...data } = formFieldData;
+		switch (type) {
+			case "text":
+				console.log("this is is a text input type");
+				return <FormDataInput type={type} {...data} />;
+			case "email":
+				console.log("this is is a email input type");
+				return <FormDataInput type={type} {...data} />;
+			case "radio":
+				console.log("render radio input");
+				return <RadioInput value={formFieldData.value!} {...data} />;
+			case "textarea":
+				console.log("render textbox");
+				return <TextBoxInput {...data}/>
+			case "checkbox":
+				console.log("render checkbox");
+				return <CheckboxInput {...data}/>
+				break;
+			default:
+		}
 	};
 
 	return (
-		<>
-			<form method="POST" onSubmit={handleSubmit}>
+		<div>
+			<form>
 				<h1>Contact Us</h1>
-				<div className="row">
-					<TextInput name="firstName" handleInput={handleInput} value={formValues.firstName} />
-					<TextInput name="Last Name" handleInput={handleInput} value={formValues.lastName} />
-				</div>
-				<TextInput name="Email Address" handleInput={handleInput} value={formValues.email} />
-				<div className="error">Please enter a valid email address</div>
-				<div className="error">This field is required</div>
-				<fieldset>
-					<RadioInput id="general" name="queryType" value="General Enquiry" />
-					<RadioInput id="support" name="queryType" value="Support Request" />
-				</fieldset>
-				<TextInput name="Message" handleInput={handleInput} value={formValues.message} />
+				{formFields.map((input) => {
+					console.log({ input });
+					return handleFormField(input);
+					// return <FormDataInput key={input.id} {...input} />;
+				})}
 				<Button text="Submit" />
 			</form>
-		</>
+		</div>
 	);
-}
+};
 
 export default App;
-
-// Contact Us
-
-// First Name
-// This field is required
-
-// Last Name
-// This field is required
-
-// Email Address
-// Please enter a valid email address
-// This field is required
-
-// Query Type
-// General Enquiry
-// Support Request
-// Please select a query type
-
-// Message
-// This field is required
-
-// I consent to being contacted by the team
-// To submit this form, please consent to being contacted
-
-// Submit
-
-// Message Sent!
-// Thanks for completing the form. We'll be in touch soon!
