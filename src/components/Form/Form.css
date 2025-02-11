@@ -93,7 +93,9 @@ span.radio-button {
 /* checkbox */
 .checkbox-container {
 	display: flex;
+	align-items: center;
 }
+
 input[type="checkbox"] {
 	position: absolute;
 	opacity: 0;
@@ -110,10 +112,14 @@ span.checkbox-check {
 	border: solid 2px var(--grey-500);
 	visibility: visible;
 }
+.checkbox-check img {
+	height: 25px;
+	width: 35px;
+	visibility: hidden;
+}
 
-.checkbox-container input:checked ~ span.checkbox-check {
-	background-color: var(--green-600);
-	height: 15px;
-	width: 15px;
-	border: 2px solid var(--green-600);
+.checkbox-container input[type="checkbox"]:checked ~ span.checkbox-check img {
+	height: 25px;
+	width: 25px;
+	visibility: visible;
 }

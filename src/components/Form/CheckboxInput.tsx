@@ -1,4 +1,5 @@
 import { useState } from "react";
+import checkSVG from "../../assets/images/icon-checkbox-check.svg";
 import "./Form.css";
 
 interface CheckboxProps {
@@ -13,7 +14,9 @@ const CheckboxInput = (props: CheckboxProps) => {
 	return (
 		<div className="checkbox-container">
 			<input type="checkbox" name={name} />
-			<span className="checkbox-check"></span>
+			<span className="checkbox-check">
+				<img src={checkSVG} alt="check" />
+			</span>
 			<label>{label}</label>
 		</div>
 	);
