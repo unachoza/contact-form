@@ -26,7 +26,7 @@ export const formFields: FormFields[] = [
 		name: "firstName",
 		label: "First Namee",
 		errorMessage: "This field is required",
-		pattern: "[a-zA-Z]",
+		pattern: "[a-zA-Z]{1,}",
 		autoFocus: true,
 		required: true,
 		halfSize: true,
@@ -37,7 +37,7 @@ export const formFields: FormFields[] = [
 		label: "Last Name",
 		name: "lasttName",
 		errorMessage: "This field is required",
-		pattern: "[a-zA-Z]",
+		pattern: "[a-zA-Z]{1,}",
 		required: true,
 		halfSize: true,
 	},
@@ -47,7 +47,7 @@ export const formFields: FormFields[] = [
 		label: "Email",
 		name: "email",
 		errorMessage: "Please enter a valid email address",
-		pattern: "[@]",
+		pattern: "^[A-Za-z0-9_.]*@[A-Za-z0-9_.]+$",
 		required: true,
 	},
 	{
@@ -81,23 +81,10 @@ export const formFields: FormFields[] = [
 		type: "checkbox",
 		label: "I consent to being contacted by the team",
 		name: "consent",
-		errorMessage: "This field is required",
+		errorMessage: "To submit this form, please consent to being contacted",
 		required: true,
 	},
 ];
-
-// Query Type
-// General Enquiry
-// Support Request
-// Please select a query type
-
-// Message
-// This field is required
-
-// I consent to being contacted by the team
-// To submit this form, please consent to being contacted
-
-// Submit
 
 // Message Sent!
 // Thanks for completing the form. We'll be in touch soon!

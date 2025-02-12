@@ -24,39 +24,39 @@ const App = () => {
 
 	const handleChange = (e: { currentTarget: { name: string; value: string } }) => {
 		setFormValues({ ...formValues, [e.currentTarget.name]: e.currentTarget.value });
+		console.log({ formValues });
+	};
+
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const formData = new FormData(event.currentTarget);
+		const formValues = Object.fromEntries(formData);
+		console.log({ formValues });
 	};
 
 	const handleFormField = (formFieldData: FormFields) => {
-		const { type, ...data } = formFieldData;
+		const { id, type, ...data } = formFieldData;
 		switch (type) {
 			case "text":
-				console.log("this is is a text input type");
-				return <FormDataInput type={type} {...data} />;
+				return <FormDataInput key={id} type={type} {...data} handleUpdate={handleChange} />;
 			case "email":
-				console.log("this is is a email input type");
-				return <FormDataInput type={type} {...data} />;
+				return <FormDataInput key={id} type={type} {...data} handleUpdate={handleChange} />;
 			case "radio":
-				console.log("render radio input");
-				return <RadioInput value={formFieldData.value!} {...data} />;
+				return <RadioInput key={id} value={formFieldData.value!} {...data} />;
 			case "textarea":
-				console.log("render textbox");
-				return <TextBoxInput {...data} />;
+				return <TextBoxInput key={id} {...data} />;
 			case "checkbox":
-				console.log("render checkbox");
-				return <CheckboxInput {...data} />;
-				break;
+				return <CheckboxInput key={id} {...data} />;
 			default:
 		}
 	};
 
 	return (
 		<div>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<h1>Contact Us</h1>
 				{formFields.map((input) => {
-					console.log({ input });
 					return handleFormField(input);
-					// return <FormDataInput key={input.id} {...input} />;
 				})}
 				<Button text="Submit" />
 			</form>
