@@ -36,13 +36,9 @@ form {
 }
 
 /* ---- Medium (Tablet) 768px x 1024px ---- */
-@media (min-width: 450px) and (max-width: 780px) {
-}
 
 @media (min-width: 450px) and (max-width: 820px) {
-	* {
-		color: blue;
-	}
+	
 	form {
 		width: 85%;
 	}
@@ -55,9 +51,7 @@ form {
 }
 
 @media (max-width: 449px) {
-	* {
-		color: red;
-	}
+
 	form {
 		width: 92%;
 		padding: 20px;
