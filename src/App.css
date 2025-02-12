@@ -16,6 +16,7 @@
 h1 {
 	color: var(--grey-900);
 	font-size: 2rem;
+	width: 100%;
 }
 form {
 	width: 55vw;
@@ -23,9 +24,48 @@ form {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
-	padding: 40px;
+	padding: 20px 40px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .row {
 	display: flex;
+}
+
+/* ---- Medium (Tablet) 768px x 1024px ---- */
+@media (min-width: 450px) and (max-width: 780px) {
+}
+
+@media (min-width: 450px) and (max-width: 820px) {
+	* {
+		color: blue;
+	}
+	form {
+		width: 85%;
+	}
+	.radio-input-container {
+		width: 42%;
+	}
+	.radio-input-container label {
+		margin-left: 1.2rem;
+	}
+}
+
+@media (max-width: 449px) {
+	* {
+		color: red;
+	}
+	form {
+		width: 92%;
+		padding: 20px;
+	}
+	.input {
+		width: 100%;
+	}
+	.radio-input-container {
+		width: 100%;
+	}
 }

@@ -12,10 +12,12 @@ interface TextBoxInputProps {
 
 const TextBoxInput = (props: TextBoxInputProps) => {
 	const { label, name, errorMessage } = props;
+
+	const screensizeRows = window.innerWidth > 450 ? 4 : 15;
 	return (
 		<div className="textarea-input">
 			<label>{label}</label>
-			<textarea name={name} rows={4} cols={40} />
+			<textarea name={name} rows={screensizeRows} cols={40} />
 			<span className="error-message">{errorMessage}</span>
 		</div>
 	);

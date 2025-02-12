@@ -40,10 +40,10 @@ const App = () => {
 				return <RadioInput value={formFieldData.value!} {...data} />;
 			case "textarea":
 				console.log("render textbox");
-				return <TextBoxInput {...data}/>
+				return <TextBoxInput {...data} />;
 			case "checkbox":
 				console.log("render checkbox");
-				return <CheckboxInput {...data}/>
+				return <CheckboxInput {...data} />;
 				break;
 			default:
 		}

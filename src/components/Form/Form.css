@@ -26,7 +26,16 @@ textarea {
 input:hover,
 input[type="radio"]:hover,
 input[type="checkbox"]:hover,
-textarea {
+textarea:hover,
+input:active,
+input[type="radio"]:active,
+input[type="checkbox"]:active,
+textarea:active {
+	cursor: pointer;
+	border: 1.5px solid var(--green-600);
+}
+
+input[type="checkbox"]:active {
 	cursor: pointer;
 	border: 1.5px solid var(--green-600);
 }
@@ -102,7 +111,7 @@ input[type="radio"]:checked ~ .radio-input-container {
 }
 
 .radio-input-container label {
-	margin: 2rem;
+	margin-left: 1.5rem;
 }
 
 span.radio-button {
