@@ -1,0 +1,18 @@
+.toast-container {
+	background-color: var(--grey-900);
+	color: var(--white);
+	padding: 20px;
+    z-index: 10;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+	display: flex;
+	flex-direction: row;
+}
+
+.title img {
+	margin: 10px;
+}
