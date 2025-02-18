@@ -1,23 +1,31 @@
-import { useState } from "react";
-import "./Form.css";
+import { ChangeEvent, FormEvent, useState } from "react";
+// import "./Form.css";
 
 interface TextBoxInputProps {
-	id: number;
+	key: number;
+	id?: string;
 	type?: string;
 	name: string;
 	label: string;
 	errorMessage: string;
 	pattern?: string;
+	handleUpdates: (e: FormEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextBoxInput = (props: TextBoxInputProps) => {
-	const { label, name, errorMessage } = props;
+	const [value, setValue] = useState("");
+	const { label, name, handleUpdates, errorMessage, ...data } = props;
 
 	const screensizeRows = window.innerWidth > 450 ? 4 : 15;
+
+	const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+		const value = event.currentTarget.value;
+		setValue(value);
+	};
 	return (
 		<div className="textarea-input">
-			<label>{label}</label>
-			<textarea name={name} rows={screensizeRows} cols={40} />
+			<label htmlFor={name}>{label}</label>
+			<textarea name={name} value={value} rows={screensizeRows} cols={40} onChange={handleChange} onBlur={handleUpdates} {...data} />
 			<span className="error-message">{errorMessage}</span>
 		</div>
 	);

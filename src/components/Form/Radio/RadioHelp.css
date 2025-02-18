@@ -1,0 +1,76 @@
+/* Remove default radio styles */
+input[type="radio"] {
+	position: absolute;
+	cursor: pointer;
+	height: 30px;
+	width: 30px;
+	opacity: 0;
+}
+
+span.radio-button {
+	height: 30px;
+	width: 30px;
+	border: solid 1px var(--grey-500);
+	background-color: var(--white);
+	border-radius: 50%;
+	margin-right: 20px;
+}
+
+
+.radio-input-container:has(input[type="radio"]:checked) {
+	background-color: var(--green-200);
+}
+
+/* Show checked state */
+input[type="radio"]:checked ~ span.radio-button img {
+	height: 30px;
+	width: 30px;
+	visibility: visible;
+}
+
+
+/* Hide unselected radio button images */
+.radio-button img {
+	visibility: hidden;
+}
+
+/* Improve hover effect */
+.radio-input-container:hover {
+	cursor: pointer;
+	border: 1.5px solid var(--green-600);
+}
+
+.radio-input-container {
+	border: 1px solid var(--grey-500);
+	height: 50px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 45%;
+	margin-block: 1rem;
+	border-radius: 10px;
+	padding-left: 1.3rem;
+}
+
+/* for radio error message  */
+fieldset:has(:user-invalid) ~ .error-message {
+	visibility: visible;
+}
+
+span.error-message {
+	font-size: 12px;
+	color: red;
+	visibility: hidden; /* starts hidden unless active error */
+}
+
+input:user-invalid ~ span {
+	visibility: visible;
+}
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}

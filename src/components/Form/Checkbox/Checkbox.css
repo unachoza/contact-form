@@ -17,7 +17,7 @@ input[type="checkbox"] {
 	cursor: pointer;
 	height: 20px;
 	width: 20px;
-    opacity: 0;
+	opacity: 0;
 }
 
 span.checkbox-check {
@@ -35,5 +35,17 @@ span.checkbox-check {
 }
 
 input[type="checkbox"]:checked ~ span.checkbox-check img {
+	visibility: visible;
+}
+
+.error-message {
+	font-size: 12px;
+	color: red;
+	visibility: hidden; /* starts hidden unless active error */
+	width: 100%;
+}
+
+/* for checkbox error message  */
+input:user-invalid ~ .error-message {
 	visibility: visible;
 }

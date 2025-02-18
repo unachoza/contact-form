@@ -1,17 +1,18 @@
 export interface FormValues {
 	firstName: string;
-	lastName?: string;
-	email?: string;
-	queryType?: string;
-	message?: string;
-	consent?: boolean;
+	lastName: string;
+	email: string;
+	queryType: string;
+	message: string;
+	consent: boolean | null;
 }
+
 export interface FormFields {
 	id: number;
 	type: string;
 	label: string;
 	name: string;
-	value?: string;
+	value?: string[];
 	errorMessage: string;
 	pattern?: string;
 	autoFocus?: boolean;
@@ -24,7 +25,7 @@ export const formFields: FormFields[] = [
 		id: 1,
 		type: "text",
 		name: "firstName",
-		label: "First Namee",
+		label: "First Name",
 		errorMessage: "This field is required",
 		pattern: "[a-zA-Z]{1,}",
 		autoFocus: true,
@@ -35,7 +36,7 @@ export const formFields: FormFields[] = [
 		id: 2,
 		type: "text",
 		label: "Last Name",
-		name: "lasttName",
+		name: "lastName",
 		errorMessage: "This field is required",
 		pattern: "[a-zA-Z]{1,}",
 		required: true,
@@ -55,19 +56,19 @@ export const formFields: FormFields[] = [
 		type: "radio",
 		label: "General Enquery",
 		name: "queryType",
-		value: "generalEnquiry",
+		value: ["generalEnquiry", "supportRequest"],
 		errorMessage: "Please select a query type",
 		required: true,
 	},
-	{
-		id: 5,
-		type: "radio",
-		label: "Support Request",
-		name: "queryType",
-		value: "supportRequest",
-		errorMessage: "Please select a query type",
-		required: true,
-	},
+	// {
+	// 	id: 5,
+	// 	type: "radio",
+	// 	label: "Support Request",
+	// 	name: "queryType",
+	// 	value: "supportRequest",
+	// 	errorMessage: "Please select a query type",
+	// 	required: true,
+	// },
 	{
 		id: 6,
 		type: "textarea",

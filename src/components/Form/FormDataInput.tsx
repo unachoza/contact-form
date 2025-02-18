@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
-// import "./Form.css";
+import "./Form.css";
 
 interface TextInputProps {
 	key: number;
@@ -10,10 +10,11 @@ interface TextInputProps {
 	errorMessage: string;
 	pattern?: string;
 	halfSize?: boolean;
-	handleUpdate: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleUpdates: (e: FormEvent<HTMLInputElement>) => void;
+	// handleUpdate: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormDataInput = ({ name, label, errorMessage, handleUpdate, halfSize, ...inputProps }: TextInputProps) => {
+const FormDataInput = ({ name, label, errorMessage, handleUpdates, halfSize, ...inputProps }: TextInputProps) => {
 	const [value, setValue] = useState("");
 
 	const screensizeWidth = window.innerWidth > 450 ? "48%" : "100%";
@@ -26,7 +27,7 @@ const FormDataInput = ({ name, label, errorMessage, handleUpdate, halfSize, ...i
 	return (
 		<div className="input" style={halfSize ? { width: screensizeWidth } : { width: "100%" }}>
 			<label htmlFor={name}>{label}</label>
-			<input {...inputProps} name={name} value={value} onChange={handleChange} />
+			<input {...inputProps} name={name} value={value} onChange={handleChange} onBlur={handleUpdates} />
 			<span className="error-message">{errorMessage}</span>
 		</div>
 	);
