@@ -1,0 +1,39 @@
+/* //////CHECKBOX INPUT////// */
+.checkbox-container {
+	display: flex;
+	align-items: center;
+	margin: 10px 0px;
+	width: 100%;
+}
+
+input[type="checkbox"]:active {
+	cursor: pointer;
+	border: 1.5px solid var(--green-600);
+}
+
+/* removes default styles */
+input[type="checkbox"] {
+	position: absolute;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+    opacity: 0;
+}
+
+span.checkbox-check {
+	display: flex;
+	margin-right: 2rem;
+	height: 15px;
+	width: 15px;
+	border: solid 2px var(--grey-500);
+	border-radius: 2px;
+	visibility: visible;
+}
+
+.checkbox-check img {
+	visibility: hidden;
+}
+
+input[type="checkbox"]:checked ~ span.checkbox-check img {
+	visibility: visible;
+}

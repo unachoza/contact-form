@@ -2,10 +2,10 @@
 	background-color: var(--grey-900);
 	color: var(--white);
 	padding: 20px;
-    z-index: 10;
-    border-radius: 10px;
-    width: 80%;
-    margin: 0 auto;
+	z-index: 10;
+	border-radius: 10px;
+	width: 80%;
+	margin: 0 auto;
 }
 
 .title {
@@ -14,5 +14,9 @@
 }
 
 .title img {
-	margin: 10px;
+	margin: 0px 10px 0px 5px;
+}
+
+h2 {
+	margin: 0px 0px 10px 0px;
 }
