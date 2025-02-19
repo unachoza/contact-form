@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
-import "./Form.css";
+import "../Form.css";
 
 interface TextInputProps {
 	key: number;

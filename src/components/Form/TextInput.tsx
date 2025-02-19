@@ -1,12 +1,16 @@
 import { ChangeEvent } from "react";
 import { useState } from "react";
-import "./Form.css";
+// import "./Form.css";
 
 interface TextInputProps {
-	id?: string;
-	name: string;
-	value: string;
-	handleInput: (name: string, value: string) => void;
+	key?: number;
+	id?: number;
+	label?: string;
+	errorMessage?: string;
+	onChange?: (value: string) => void;
+	name?: string;
+	value?: string;
+	handleInput?: (name: string, value: string) => void;
 }
 
 function TextInput({ name, handleInput }: TextInputProps) {
@@ -32,10 +36,10 @@ function TextInput({ name, handleInput }: TextInputProps) {
 				name={name}
 				value={value}
 				onChange={handleInputChange}
-				onBlur={(e) => handleInput(e.currentTarget.name, e.currentTarget.value)}
+				onBlur={(e) => handleInput!(e.currentTarget.name, e.currentTarget.value)}
 				required
 			/>
-			<div className="error">This field is required</div> */
+			<div className="error">This field is required</div>
 		</div>
 	);
 }

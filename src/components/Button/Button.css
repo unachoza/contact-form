@@ -17,3 +17,7 @@ button:hover {
 	cursor: pointer;
 	background-color: var(--grey-900);
 }
+
+button:focus {
+	outline-offset: 2px;
+}

@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 // import "./Form.css";
+import "./TextareaInput.css";
 
 interface TextBoxInputProps {
 	key: number;
@@ -33,9 +34,10 @@ const TextBoxInput = (props: TextBoxInputProps) => {
 				onChange={handleChange}
 				onBlur={handleUpdates}
 				aria-describedby={`${name}-error`}
+				required
 				{...data}
 			/>
-			<span className="error-message" role="alert" id={`${name}-error`}>
+			<span data-testid="error" className="error-message" role="alert" id={`${name}-error`}>
 				{errorMessage}
 			</span>
 		</div>

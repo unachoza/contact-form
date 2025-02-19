@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
 import Button from "./components/Button/Button";
-import FormDataInput from "./components/Form/FormDataInput";
+import FormDataInput from "./components/Form/TextInput/FormDataInput";
 import RadioInput from "./components/Form/Radio/RadioInput";
-import TextBoxInput from "./components/Form/TextBoxInput";
+import TextBoxInput from "./components/Form/TextareaInput/TextareaInput";
 import CheckboxInput from "./components/Form/Checkbox/CheckboxInput";
 import Toast from "./components/Toast/Toast";
 import { formFields, FormFields, FormValues } from "./types/types";
@@ -37,7 +37,7 @@ const App = () => {
 		const rawValues = Object.fromEntries(formData);
 		const formValues = {
 			...rawValues,
-			consent: rawValues.consent === "on", 
+			consent: rawValues.consent === "on",
 		};
 		if (Object.values(formValues).every((value) => value)) {
 			setIsSubmitted(true);
@@ -53,16 +53,7 @@ const App = () => {
 			case "email":
 				return <FormDataInput key={id!} type={type} name={name!} handleUpdates={handleChange} {...data} />;
 			case "radio":
-				return (
-					<RadioInput
-						key={id}
-						name={name}
-						options={value!}
-						formValues={formValues}
-						handleUpdates={handleChange}
-						{...data}
-					/>
-				);
+				return <RadioInput key={id} name={name} options={value!} formValues={formValues} handleUpdates={handleChange} {...data} />;
 			case "textarea":
 				return <TextBoxInput key={id} name={name} handleUpdates={handleChange} {...data} />;
 

@@ -8,29 +8,12 @@ input {
 	color: black;
 }
 
-textarea {
-	background-color: var(--white);
-	border: solid black 1px;
-	border-radius: 5px;
-	color: black;
-	padding: 10px;
-	margin: 10px 0px;
-}
-
-.textarea-input {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-
 input:hover,
 input[type="radio"]:hover,
 input[type="checkbox"]:hover,
-textarea:hover,
 input:active,
 input[type="radio"]:active,
-input[type="checkbox"]:active,
-textarea:active {
+input[type="checkbox"]:active {
 	cursor: pointer;
 	border: 0.1rem solid var(--green-600);
 }
@@ -52,12 +35,4 @@ input:user-invalid {
 .input {
 	display: flex;
 	flex-direction: column;
-}
-
-textarea:user-invalid ~ span.error-message {
-	visibility: visible;
-}
-
-textarea:user-invalid {
-	border: 1px solid red;
 }
