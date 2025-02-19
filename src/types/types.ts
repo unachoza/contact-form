@@ -59,6 +59,7 @@ export const formFields: FormFields[] = [
 		value: ["generalEnquiry", "supportRequest"],
 		errorMessage: "Please select a query type",
 		required: true,
+		halfSize: true,
 	},
 
 	{

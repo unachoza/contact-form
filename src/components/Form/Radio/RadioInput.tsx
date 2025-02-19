@@ -12,10 +12,12 @@ interface RadioInputProps {
 	options: string[];
 	formValues: FormValues;
 	errorMessage: string;
+	halfSize?: boolean;
 	handleUpdates: (e: FormEvent<HTMLInputElement>) => void;
 }
 
-const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpdates, ...data }: RadioInputProps) => {
+const RadioInput = ({ name, label, options, formValues, errorMessage, halfSize, handleUpdates, ...data }: RadioInputProps) => {
+	const screensizeWidth = window.innerWidth > 450 ? "45%" : "94%";
 	//function to select radio input whilst using custom radio style with span/image ensuring accessibility
 	const handleSpacebarPress = (e: KeyboardEvent) => {
 		if (e.key === "Enter" || e.key === " ") {
@@ -34,7 +36,7 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpda
 				<legend>{label}</legend>
 				{options.map((option) => {
 					return (
-						<div key={`${option}-id`} className="radio-input-container">
+						<div key={`${option}-id`} className="radio-input-container" style={halfSize ? { width: screensizeWidth } : { width: "94%" }}>
 							<input
 								{...data}
 								id={name}
