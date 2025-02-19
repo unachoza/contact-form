@@ -31,10 +31,10 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpda
 	return (
 		<>
 			<fieldset role="radiogroup" aria-required="true" className="radios">
-				<legend>Query Type</legend>
+				<legend>{label}</legend>
 				{options.map((option) => {
 					return (
-						<div className="radio-input-container">
+						<div key={`${option}-id`} className="radio-input-container">
 							<input
 								{...data}
 								id={name}

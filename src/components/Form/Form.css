@@ -32,12 +32,7 @@ input[type="radio"]:active,
 input[type="checkbox"]:active,
 textarea:active {
 	cursor: pointer;
-	border: 1.5px solid var(--green-600);
-}
-
-input[type="checkbox"]:active {
-	cursor: pointer;
-	border: 1.5px solid var(--green-600);
+	border: 0.1rem solid var(--green-600);
 }
 
 span.error-message {
@@ -59,105 +54,10 @@ input:user-invalid {
 	flex-direction: column;
 }
 
-/* //////RADIO INPUT////// */
-/* remove default radio styles */
-input[type="radio"] {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
-}
-
-.radio-input-container {
-	border: 1px solid var(--grey-500);
-	height: 50px;
-	display: flex;
-	justify-content: start;
-	align-items: center;
-	width: 45%;
-	margin-block: 1rem;
-	border-radius: 10px;
-	padding-left: 1.3rem;
-}
-
-.radio-button img {
-	visibility: hidden;
-}
-
-input[type="radio"]:checked ~ span.radio-button img {
-	height: 30px;
-	width: 30px;
+textarea:user-invalid ~ span.error-message {
 	visibility: visible;
 }
 
-input[type="radio"]:checked ~ span.radio-button {
-	visibility: hidden;
-}
-
-/* TODO */
-/* currently not working */
-input[type="radio"]:checked ~ .radio-input-container {
-	background: var(--green-200);
-}
-
-.radio-input-container:hover {
-	cursor: pointer;
-	border: 1.5px solid var(--green-600);
-}
-.radio-input-container:focus,
-.radio-input-container:active {
-	background: var(--green-200);
-}
-
-.radio-input-container label {
-	margin-left: 1.5rem;
-}
-
-span.radio-button {
-	border: solid 2px var(--grey-500);
-	visibility: visible;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-/* //////CHECKBOX INPUT////// */
-.checkbox-container {
-	display: flex;
-	align-items: center;
-	margin: 10px 0px;
-	width: 100%;
-}
-
-/* removes default styles */
-input[type="checkbox"] {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
-}
-
-span.checkbox-check {
-	display: flex;
-	margin-right: 2rem;
-	height: 15px;
-	width: 15px;
-	border: solid 2px var(--grey-500);
-	border-radius: 2px;
-	visibility: visible;
-}
-
-.checkbox-check img {
-	visibility: hidden;
-}
-
-input[type="checkbox"]:checked ~ span.checkbox-check img {
-	visibility: visible;
-}
-
-input[type="checkbox"]:checked ~ span.checkbox-check {
-	visibility: hidden;
+textarea:user-invalid {
+	border: 1px solid red;
 }

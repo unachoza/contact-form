@@ -30,13 +30,11 @@ const HardCodedForm = () => {
 	const handleUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { name, value } = event.currentTarget;
 		setFormValues({ ...formValues, [name]: value });
-		console.log({ formValues });
 	};
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (Object.values(formValues).every((value) => value)) {
-			console.log(Object.entries(formValues));
 			setIsSubmitted(true);
 			setToastOpen(true);
 		}

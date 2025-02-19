@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import Button from "./components/Button/Button";
 import FormDataInput from "./components/Form/FormDataInput";
 import RadioInput from "./components/Form/Radio/RadioInput";
@@ -21,7 +21,6 @@ const App = () => {
 	const [formValues, setFormValues] = useState<FormValues>(INITIAL_FORM_VALUES);
 	const [toastOpen, setToastOpen] = useState<boolean>(false);
 	const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-	const [hasConsent, setHasConsent] = useState<boolean>(false);
 
 	const handleChange = (e: { currentTarget: { name: string; value: string; type: string; checked?: boolean } }) => {
 		const { name, value, type, checked } = e.currentTarget;
@@ -38,10 +37,9 @@ const App = () => {
 		const rawValues = Object.fromEntries(formData);
 		const formValues = {
 			...rawValues,
-			consent: rawValues.consent === "on", // Convert checkbox to boolean
+			consent: rawValues.consent === "on", 
 		};
 		if (Object.values(formValues).every((value) => value)) {
-			console.log(Object.entries(formValues));
 			setIsSubmitted(true);
 			setToastOpen(true);
 		}
@@ -61,7 +59,6 @@ const App = () => {
 						name={name}
 						options={value!}
 						formValues={formValues}
-						// checked={formValues[name as keyof FormValues] === value}
 						handleUpdates={handleChange}
 						{...data}
 					/>
