@@ -1,14 +1,18 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Button from "./Button";
 
 describe("Button Component", () => {
 	it("should contain correct text", () => {
 		render(<Button text="submit" />);
 		const buttonElement = screen.getByRole("button");
-		console.log({ buttonElement });
 		expect(buttonElement).toHaveTextContent("submit");
 	}),
-		it("should should give valid user feedback; ie: hover status", () => {}),
-		it("should should give valid user feedback; ie: click behavior", () => {}),
-		it("should trigger click event", () => {});
+		it("on mouse hover shows hover css behavior", async () => {
+			render(<Button text="submit" />);
+			const buttonElementByRole = screen.getByRole("button", { name: /submit/i });
+			await userEvent.hover(buttonElementByRole);
+			expect(buttonElementByRole).not.toHaveStyle({ "background-color": "#0c7d69" });
+			expect(buttonElementByRole).toHaveStyle({ cursor: "pointer" });
+		});
 });

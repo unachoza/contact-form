@@ -5,6 +5,6 @@ interface ButtonProps {
 }
 
 function Button({ text }: ButtonProps): JSX.Element {
-	return <button>{text}</button>;
+	return <button >{text}</button>;
 }
 export default Button;
