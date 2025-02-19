@@ -18,10 +18,12 @@ const CheckboxInput = ({ label, name, errorMessage, handleUpdates }: CheckboxPro
 		<>
 			<div className="checkbox-container">
 				<input type="checkbox" name={name} onChange={handleUpdates} />
-				<span className="checkbox-check">
+				<span className="checkbox-check"
+				aria-labelledby="tac"
+				>
 					<img src={checkSVG} alt="check" />
 				</span>
-				<label htmlFor={name}>{label}</label>
+				<label id="tac" htmlFor={name}>{label}</label>
 			</div>
 			<div className="error-message" id="consentError">
 				{errorMessage}

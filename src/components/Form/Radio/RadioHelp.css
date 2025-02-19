@@ -7,6 +7,10 @@ input[type="radio"] {
 	opacity: 0;
 }
 
+input[type="radio"]:focus ~ span.radio-button {
+	outline: 0.2rem solid var(--green-600);
+}
+
 span.radio-button {
 	height: 30px;
 	width: 30px;

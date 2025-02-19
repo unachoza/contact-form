@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, KeyboardEvent } from "react";
 import "./RadioHelp.css";
 import "../Form.css";
 import { getLabelforInput } from "../../../types/utility";
@@ -12,12 +12,22 @@ interface RadioInputProps {
 	options: string[];
 	formValues: FormValues;
 	errorMessage: string;
-	// checked: boolean;
 	handleUpdates: (e: FormEvent<HTMLInputElement>) => void;
 }
 
 const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpdates, ...data }: RadioInputProps) => {
-	console.log(formValues);
+	//function to select radio input whilst using custom radio style with span/image ensuring accessibility
+	const handleSpacebarPress = (e: KeyboardEvent) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+
+			const spanElement = e.currentTarget as HTMLElement;
+			const radioInput = spanElement.previousElementSibling as HTMLInputElement | null;
+			if (radioInput) {
+				radioInput.click();
+			}
+		}
+	};
 	return (
 		<>
 			<fieldset role="radiogroup" aria-required="true" className="radios">
@@ -34,9 +44,15 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpda
 								checked={formValues[name as keyof FormValues] === option}
 								aria-describedby="queryError"
 								onChange={handleUpdates}
-								tabIndex={4}
+								tabIndex={-1}
 							/>
-							<span role="radio" className="radio-button">
+							<span
+								role="radio"
+								tabIndex={0}
+								className="radio-button"
+								aria-checked={formValues[name as keyof FormValues] === option}
+								onKeyDown={handleSpacebarPress}
+							>
 								<img src={RadioSelected} alt="selected radio" />
 							</span>
 							<label htmlFor={name}>{getLabelforInput(option)}</label>
