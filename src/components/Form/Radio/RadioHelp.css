@@ -16,7 +16,6 @@ span.radio-button {
 	margin-right: 20px;
 }
 
-
 .radio-input-container:has(input[type="radio"]:checked) {
 	background-color: var(--green-200);
 }
@@ -27,7 +26,6 @@ input[type="radio"]:checked ~ span.radio-button img {
 	width: 30px;
 	visibility: visible;
 }
-
 
 /* Hide unselected radio button images */
 .radio-button img {
@@ -52,6 +50,10 @@ input[type="radio"]:checked ~ span.radio-button img {
 	padding-left: 1.3rem;
 }
 
+.radio-input-container label {
+	font-size: 18px;
+}
+
 /* for radio error message  */
 fieldset:has(:user-invalid) ~ .error-message {
 	visibility: visible;
@@ -66,6 +68,7 @@ span.error-message {
 input:user-invalid ~ span {
 	visibility: visible;
 }
+
 fieldset {
 	border: none;
 	padding: 0;
