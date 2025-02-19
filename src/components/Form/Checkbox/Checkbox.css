@@ -8,7 +8,17 @@
 
 input[type="checkbox"]:active {
 	cursor: pointer;
-	border: 1.5px solid var(--green-600);
+	border: 0.1rem solid var(--green-600);
+}
+
+input[type="checkbox"]:focus ~ span.checkbox-check,
+input[type="checkbox"]:active ~ span.checkbox-check {
+	cursor: pointer;
+	border: 0.2rem solid var(--green-600);
+}
+
+label:hover {
+	cursor: pointer;
 }
 
 /* removes default styles */

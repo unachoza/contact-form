@@ -35,7 +35,7 @@ input[type="radio"]:checked ~ span.radio-button img {
 /* Improve hover effect */
 .radio-input-container:hover {
 	cursor: pointer;
-	border: 1.5px solid var(--green-600);
+	border: 0.1rem solid var(--green-600);
 }
 
 .radio-input-container {
