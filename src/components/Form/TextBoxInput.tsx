@@ -25,8 +25,19 @@ const TextBoxInput = (props: TextBoxInputProps) => {
 	return (
 		<div className="textarea-input">
 			<label htmlFor={name}>{label}</label>
-			<textarea name={name} value={value} rows={screensizeRows} cols={40} onChange={handleChange} onBlur={handleUpdates} {...data} />
-			<span className="error-message">{errorMessage}</span>
+			<textarea
+				name={name}
+				value={value}
+				rows={screensizeRows}
+				cols={40}
+				onChange={handleChange}
+				onBlur={handleUpdates}
+				aria-describedby={`${name}-error`}
+				{...data}
+			/>
+			<span className="error-message" role="alert" id={`${name}-error`}>
+				{errorMessage}
+			</span>
 		</div>
 	);
 };

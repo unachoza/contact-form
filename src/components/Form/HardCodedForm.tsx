@@ -60,21 +60,21 @@ const HardCodedForm = () => {
 							aria-describedby="firstNameError"
 							onBlur={(e) => handleUpdate(e)}
 						/>
-						<span className="error-message" id="firstNameError">
+						<span className="error-message" role="alert" id="firstNameError">
 							This field is required
 						</span>
 					</div>
 					<div className="question-container">
 						<label htmlFor="lastName">Last Name</label>
 						<input id="lastName" type="text" name="lastName" required aria-describedby="lastNameError" onBlur={(e) => handleUpdate(e)} />
-						<span className="error-message" id="lastNameError">
+						<span className="error-message" role="alert" id="lastNameError">
 							This field is required
 						</span>
 					</div>
 					<div className="question-container">
 						<label htmlFor="email">Email</label>
 						<input id="email" type="email" name="email" aria-describedby="emailError" required onBlur={(e) => handleUpdate(e)} />
-						<span className="error-message" id="emailError">
+						<span className="error-message" role="alert" id="emailError">
 							Please enter a valid email address
 						</span>
 					</div>
@@ -109,7 +109,7 @@ const HardCodedForm = () => {
 							Support Request
 						</label>
 					</fieldset>
-					<span className="error-message" id="queryError">
+					<span className="error-message" role="alert" id="queryError">
 						Please select a query type
 					</span>
 					<div className="question-container">
@@ -123,7 +123,7 @@ const HardCodedForm = () => {
 							aria-describedby="messageError"
 							onBlur={(e) => handleUpdate(e)}
 						></textarea>
-						<span className="error-message" id="messageError">
+						<span className="error-message" role="alert" id="messageError">
 							This field is required
 						</span>
 					</div>
@@ -133,7 +133,7 @@ const HardCodedForm = () => {
 						{/* //role= checkbox */}
 						{hasConsent && <img src={CheckboxCheck} alt="checked consent" />}
 						<label htmlFor="consent">I consent to being contacted by the team</label>
-						<div className="error-message" id="consentError">
+						<div className="error-message" role="alert" id="consentError">
 							To submit this form, please consent to being contacted
 						</div>
 					</div>

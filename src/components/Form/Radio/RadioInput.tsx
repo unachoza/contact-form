@@ -42,7 +42,7 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpda
 								name={name}
 								value={option}
 								checked={formValues[name as keyof FormValues] === option}
-								aria-describedby="queryError"
+								aria-describedby={`${name}-error`}
 								onChange={handleUpdates}
 								tabIndex={-1}
 							/>
@@ -60,7 +60,7 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, handleUpda
 					);
 				})}
 			</fieldset>
-			<span className="error-message" id="queryError">
+			<span className="error-message" role="alert" id={`${name}-error`}>
 				{errorMessage}
 			</span>
 		</>
