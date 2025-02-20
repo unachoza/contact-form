@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react";
 import Button from "./components/Button/Button";
 import FormDataInput from "./components/Form/TextInput/FormDataInput";
 import RadioInput from "./components/Form/Radio/RadioInput";
-import TextBoxInput from "./components/Form/TextareaInput/TextareaInput";
+import TextareaInput from "./components/Form/TextareaInput/TextareaInput";
 import CheckboxInput from "./components/Form/Checkbox/CheckboxInput";
 import Toast from "./components/Toast/Toast";
 import { formFields, FormFields, FormValues } from "./types/types";
@@ -55,7 +55,7 @@ const App = () => {
 			case "radio":
 				return <RadioInput key={id} name={name} options={value!} formValues={formValues} handleUpdates={handleChange} {...data} />;
 			case "textarea":
-				return <TextBoxInput key={id} name={name} handleUpdates={handleChange} {...data} />;
+				return <TextareaInput key={id} name={name} handleUpdates={handleChange} {...data} />;
 
 			case "checkbox":
 				return (

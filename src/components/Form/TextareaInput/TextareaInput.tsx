@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 // import "./Form.css";
 import "./TextareaInput.css";
 
-interface TextBoxInputProps {
+interface TextareaInputProps {
 	key: number;
 	id?: string;
 	type?: string;
@@ -13,7 +13,7 @@ interface TextBoxInputProps {
 	handleUpdates: (e: FormEvent<HTMLTextAreaElement>) => void;
 }
 
-const TextBoxInput = (props: TextBoxInputProps) => {
+const TextareaInput = (props: TextareaInputProps) => {
 	const [value, setValue] = useState("");
 	const { label, name, handleUpdates, errorMessage, ...data } = props;
 
@@ -34,7 +34,6 @@ const TextBoxInput = (props: TextBoxInputProps) => {
 				onChange={handleChange}
 				onBlur={handleUpdates}
 				aria-describedby={`${name}-error`}
-				required
 				{...data}
 			/>
 			<span data-testid="error" className="error-message" role="alert" id={`${name}-error`}>
@@ -44,4 +43,4 @@ const TextBoxInput = (props: TextBoxInputProps) => {
 	);
 };
 
-export default TextBoxInput;
+export default TextareaInput;

@@ -22,7 +22,6 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, halfSize, 
 	const handleSpacebarPress = (e: KeyboardEvent) => {
 		if (e.key === "Enter" || e.key === " ") {
 			e.preventDefault();
-
 			const spanElement = e.currentTarget as HTMLElement;
 			const radioInput = spanElement.previousElementSibling as HTMLInputElement | null;
 			if (radioInput) {

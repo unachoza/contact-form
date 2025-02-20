@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import userEvent from "@testing-library/user-event";
-import TextBoxInput from "./TextareaInput";
+import TextareaInput from "./TextareaInput";
 import Button from "../../Button/Button";
 
 describe("TextareaInput Component", () => {
@@ -9,7 +9,7 @@ describe("TextareaInput Component", () => {
 		vi.spyOn(window, "alert");
 		render(
 			<>
-				<TextBoxInput
+				<TextareaInput
 					key={1}
 					type="textarea"
 					name="messageExample"
@@ -42,7 +42,6 @@ describe("TextareaInput Component", () => {
 
 		await userEvent.tab();
 		expect(textareaInputElement).toHaveFocus();
-		console.log(textareaInputElement.validity.valid);
 
 		//textarea starts empty, and user types input
 		await userEvent.type(textareaInputElement, "something");

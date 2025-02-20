@@ -8,6 +8,7 @@ interface TextInputProps {
 	name: string;
 	label: string;
 	errorMessage: string;
+	required?: boolean;
 	pattern?: string;
 	halfSize?: boolean;
 	handleUpdates: (e: FormEvent<HTMLInputElement>) => void;
