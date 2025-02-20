@@ -16,12 +16,11 @@ Users should be able to:
 -   View the optimal layout for the interface depending on their device's screen size
 -   See hover and focus states for all interactive elements on the page
 
-### Screenshots
+### My Screenshots
 
 ![](./src/assets/screenshots/empty.png)
 ![](./src/assets/screenshots/errors.png)
 ![](./src/assets/screenshots/success.png)
-
 
 ### Built with
 
@@ -35,7 +34,7 @@ Users should be able to:
 
 -   Keyboard interactions change when you aren't using the native radio or checkbox and use a span in it's place. MDN advises to Use the tabindex attribute if the role="radio" is used on an element that does not natively accept keyboard focus. E.g., a <div> or <span>. Likely will also need to write onKeyDown function to select the <span role="radio"/>
 
-- I tried handling client side form validations, giving immediate user feedback with :user-invalid CSS pseudo-class selectors but had trouble testing this as it's a newer css feature and not available on all browsers. When working properly, the way I implemented this CSS pseudo-class selector is by starting the error message with visibility: hidden, then changing to visibility: visible if an error is present from a required input or pattern mismatch. I like it because it gives feedback immediately when the form field loses focus instead of waiting for the form submission. However, I was not able to get those tests to pass. 
+-   I tried handling client side form validations, giving immediate user feedback with :user-invalid CSS pseudo-class selectors but had trouble testing this as it's a newer css feature and not available on all browsers. When working properly, the way I implemented this CSS pseudo-class selector is by starting the error message with visibility: hidden, then changing to visibility: visible if an error is present from a required input or pattern mismatch. I like it because it gives feedback immediately when the form field loses focus instead of waiting for the form submission. However, I was not able to get those tests to pass.
 
 ### Useful resources
 
