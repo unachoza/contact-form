@@ -23,7 +23,7 @@ describe("TextareaInput Component", () => {
 	});
 
 	it("should recieve user input", async () => {
-		const textareaInputElement = screen.getByRole("textbox");
+		const textareaInputElement = screen.getByRole("textbox", { name: /messageExample/ });
 		await userEvent.type(textareaInputElement, "message");
 		expect(textareaInputElement).toHaveValue("message");
 
@@ -46,6 +46,7 @@ describe("TextareaInput Component", () => {
 		//textarea starts empty, and user types input
 		await userEvent.type(textareaInputElement, "something");
 		expect(textareaInputElement).toHaveValue("something");
+		
 
 		//user clears their input
 		await userEvent.clear(textareaInputElement);

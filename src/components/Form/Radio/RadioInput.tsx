@@ -31,7 +31,7 @@ const RadioInput = ({ name, label, options, formValues, errorMessage, halfSize, 
 	};
 	return (
 		<>
-			<fieldset role="radiogroup" aria-required="true" className="radios">
+			<fieldset data-testid="radio-group-test" role="radiogroup" aria-required="true" className="radios">
 				<legend>{label}</legend>
 				{options.map((option) => {
 					return (

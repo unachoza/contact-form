@@ -4,7 +4,6 @@ import "./TextareaInput.css";
 
 interface TextareaInputProps {
 	key: number;
-	id?: string;
 	type?: string;
 	name: string;
 	label: string;
@@ -27,6 +26,7 @@ const TextareaInput = (props: TextareaInputProps) => {
 		<div className="textarea-input">
 			<label htmlFor={name}>{label}</label>
 			<textarea
+				id={name}
 				name={name}
 				value={value}
 				rows={screensizeRows}
@@ -34,6 +34,7 @@ const TextareaInput = (props: TextareaInputProps) => {
 				onChange={handleChange}
 				onBlur={handleUpdates}
 				aria-describedby={`${name}-error`}
+				required
 				{...data}
 			/>
 			<span data-testid="error" className="error-message" role="alert" id={`${name}-error`}>

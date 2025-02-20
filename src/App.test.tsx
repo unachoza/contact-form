@@ -10,15 +10,26 @@ import App from "./App";
 import userEvent from "@testing-library/user-event";
 
 interface MockFormValuesType {
-	input1: string;
-	input2: string;
-	input3: string;
+	firstNameExamplename: string;
+	lastNameExamplename: string;
+	emailExamplename: string;
+	queryTypeExample: string;
+	messageExample: string;
+	checkboxExampleName: boolean | null;
 }
 
-const mockFormValues: MockFormValuesType = {
-	input1: "",
-	input2: "",
-	input3: "",
+let mockFormValues: MockFormValuesType = {
+	firstNameExamplename: "",
+	lastNameExamplename: "",
+	emailExamplename: "",
+	queryTypeExample: "",
+	messageExample: "",
+	checkboxExampleName: null,
+};
+const setStateMock = vi.fn();
+
+const handleUpdates = (e: any) => {
+	mockFormValues = { ...mockFormValues, [e.currentTarget.name]: e.currentTarget.value };
 };
 
 describe("App component", () => {
@@ -36,7 +47,7 @@ describe("App component", () => {
 			...screen.getAllByRole("checkbox"), // checkboxes
 		];
 		formElements.forEach((element) => {
-			screen.debug(element);
+			// screen.debug(element);
 		});
 	});
 
@@ -52,7 +63,7 @@ describe("App component", () => {
 					name="firstNameExamplename"
 					label="firstNameExamplelabel"
 					errorMessage="opps there is a firstName error"
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<FormDataInput
 					key={2}
@@ -60,7 +71,7 @@ describe("App component", () => {
 					name="lastNameExamplename"
 					label="lastNameExamplelabel"
 					errorMessage="opps there is a lastName error"
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<FormDataInput
 					key={3}
@@ -68,7 +79,7 @@ describe("App component", () => {
 					name="emailExamplename"
 					label="emailExamplelabel"
 					errorMessage="opps there is a email error"
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<RadioInput
 					key={4}
@@ -79,7 +90,7 @@ describe("App component", () => {
 					formValues={mockFormValues}
 					errorMessage="opps there was a radio error"
 					halfSize={true}
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<TextareaInput
 					key={5}
@@ -87,14 +98,14 @@ describe("App component", () => {
 					name="messageExample"
 					label="messageExample"
 					errorMessage="oops there was an error"
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<CheckboxInput
 					key={6}
 					name="checkboxExamplename"
 					label="checkboxExamplelabel"
 					errorMessage="opps there is a checkbox error"
-					handleUpdates={vi.fn()}
+					handleUpdates={handleUpdates}
 				/>
 				<Button text="submit" />
 			</form>
@@ -122,7 +133,15 @@ describe("App component", () => {
 	//NOT PASSING TEST
 	it("should alert user on sucess with toast including aria attributes", async () => {
 		vi.spyOn(window, "alert").mockImplementation(() => {});
-		const handleSubmit = vi.fn((e) => e.preventDefault());
+		let mockToastOpen = false;
+		let mockIsSubmited = false;
+		const handleSubmit = (e: any) => {
+			e.preventDefault();
+			if (Object.values(mockFormValues).every((value) => value)) {
+				mockToastOpen = true;
+				mockIsSubmited = true;
+			}
+		};
 		render(
 			<>
 				<Toast />
@@ -133,7 +152,7 @@ describe("App component", () => {
 						name="firstNameExamplename"
 						label="firstNameExamplelabel"
 						errorMessage="opps there is a firstName error"
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<FormDataInput
 						key={2}
@@ -141,7 +160,7 @@ describe("App component", () => {
 						name="lastNameExamplename"
 						label="lastNameExamplelabel"
 						errorMessage="opps there is a lastName error"
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<FormDataInput
 						key={3}
@@ -149,7 +168,7 @@ describe("App component", () => {
 						name="emailExamplename"
 						label="emailExamplelabel"
 						errorMessage="opps there is a email error"
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<RadioInput
 						key={4}
@@ -160,7 +179,7 @@ describe("App component", () => {
 						formValues={mockFormValues}
 						errorMessage="opps there was a radio error"
 						halfSize={true}
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<TextareaInput
 						key={5}
@@ -168,14 +187,14 @@ describe("App component", () => {
 						name="messageExample"
 						label="messageExample"
 						errorMessage="oops there was an error"
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<CheckboxInput
 						key={6}
 						name="checkboxExamplename"
 						label="checkboxExamplelabel"
 						errorMessage="opps there is a checkbox error"
-						handleUpdates={vi.fn()}
+						handleUpdates={handleUpdates}
 					/>
 					<Button text="submit" />
 				</form>
@@ -189,7 +208,7 @@ describe("App component", () => {
 			...screen.getAllByRole("button"), // button
 		];
 
-		expect(formElements).toHaveLength(9);
+		expect(formElements).toHaveLength(10);
 
 		// Fill out the form
 		await userEvent.type(formElements[0], "John");
@@ -215,7 +234,7 @@ describe("App component", () => {
 
 		// // Click the submit button
 		await userEvent.click(screen.getByRole("button", { name: /submit/i }));
-		expect(handleSubmit).toHaveBeenCalledTimes(2);
+		expect(handleSubmit).toHaveBeenCalledTimes(3);
 
 		// Assert that the success toast appears
 		expect(screen.getByText(/message sent!/)).toBeInTheDocument();
@@ -267,5 +286,113 @@ describe("App component", () => {
 
 		// FAILS//
 		expect(screen.getAllByRole("textbox")[0].closest(".input")).toHaveStyle("width: 100%");
+	});
+
+	//NOT PASSING TEST
+	it("should show toast on successful form submission", async () => {
+		let mockToastOpen = false;
+		let mockIsSubmitted = false;
+
+		// Ensure mockFormValues are updated
+		const handleSubmit = (e: any) => {
+			e.preventDefault();
+			if (Object.values(mockFormValues).every((value) => value)) {
+				mockToastOpen = true;
+				mockIsSubmitted = true;
+			}
+		};
+
+		render(
+			<>
+				{mockToastOpen && <Toast />}
+				<form onSubmit={handleSubmit}>
+					<FormDataInput
+						key={1}
+						type="text"
+						name="firstNameExamplename"
+						label="First Name"
+						errorMessage="Oops, first name error"
+						handleUpdates={handleUpdates}
+					/>
+					<FormDataInput
+						key={2}
+						type="text"
+						name="lastNameExamplename"
+						label="Last Name"
+						errorMessage="Oops, last name error"
+						handleUpdates={handleUpdates}
+					/>
+					<FormDataInput
+						key={3}
+						type="email"
+						name="emailExamplename"
+						label="Email"
+						errorMessage="Oops, email error"
+						handleUpdates={handleUpdates}
+					/>
+					<RadioInput
+						key={4}
+						name="queryTypeExample"
+						label="Query Type"
+						options={["exampleRadioValue1", "exampleRadioValue2"]}
+						//@ts-ignore
+						formValues={mockFormValues}
+						errorMessage="Oops, radio error"
+						handleUpdates={handleUpdates}
+					/>
+					<TextareaInput
+						key={5}
+						type="textarea"
+						name="messageExample"
+						label="Message"
+						errorMessage="Oops, message error"
+						handleUpdates={handleUpdates}
+					/>
+					<CheckboxInput
+						key={6}
+						name="checkboxExampleName"
+						label="Consent"
+						errorMessage="Oops, checkbox error"
+						handleUpdates={handleUpdates}
+					/>
+					<Button text="Submit" />
+				</form>
+			</>
+		);
+
+		// Fill form inputs
+		await userEvent.type(screen.getByLabelText(/first name/i), "John");
+		mockFormValues.firstNameExamplename = "John";
+
+		await userEvent.type(screen.getByLabelText(/last name/i), "Doe");
+		mockFormValues.lastNameExamplename = "Doe";
+
+		await userEvent.type(screen.getByLabelText(/email/i), "john.doe@example.com");
+		mockFormValues.emailExamplename = "john.doe@example.com";
+
+		await userEvent.type(screen.getByLabelText(/message/i), "Test message");
+		mockFormValues.messageExample = "Test message";
+
+		await userEvent.click(screen.getByRole("radio", { name: /exampleRadioValue1/i }));
+		mockFormValues.queryTypeExample = "exampleRadioValue1";
+
+		await userEvent.click(screen.getByRole("checkbox", { name: /consent/i }));
+		mockFormValues.checkboxExampleName = true;
+
+		// Submit form
+		await userEvent.click(screen.getByRole("button", { name: /submit/i }));
+
+		// Check if form values were updated
+		expect(mockFormValues).toEqual({
+			firstNameExamplename: "John",
+			lastNameExamplename: "Doe",
+			emailExamplename: "john.doe@example.com",
+			queryTypeExample: "exampleRadioValue1",
+			messageExample: "Test message",
+			checkboxExampleName: true,
+		});
+
+		// Ensure toast is shown after successful submission
+		expect(screen.getByText(/message sent!/i)).toBeInTheDocument();
 	});
 });

@@ -5,7 +5,6 @@ import "./Checkbox.css";
 
 interface CheckboxProps {
 	key?: number;
-	id?: number;
 	name: string;
 	label: string;
 	checked?: boolean;
@@ -17,11 +16,11 @@ const CheckboxInput = ({ label, name, errorMessage, handleUpdates }: CheckboxPro
 	return (
 		<>
 			<div className="checkbox-container">
-				<input type="checkbox" name={name} onChange={handleUpdates} aria-describedby={`${name}-error`} />
-				<span className="checkbox-check" aria-labelledby="tac">
+				<input type="checkbox" id={name} name={name} onChange={handleUpdates} aria-describedby={`${name}-error`} />
+				<span className="checkbox-check" aria-labelledby={name}>
 					<img src={checkSVG} alt="check" />
 				</span>
-				<label id="tac" htmlFor={name}>
+				<label id={name} htmlFor={name}>
 					{label}
 				</label>
 			</div>

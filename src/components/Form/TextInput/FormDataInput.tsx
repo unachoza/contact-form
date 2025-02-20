@@ -27,7 +27,7 @@ const FormDataInput = ({ name, label, errorMessage, handleUpdates, halfSize, ...
 	return (
 		<div className="input" style={halfSize ? { width: screensizeWidth } : { width: "100%" }}>
 			<label htmlFor={name}>{label}</label>
-			<input {...inputProps} name={name} value={value} onChange={handleChange} onBlur={handleUpdates} aria-describedby={`${name}-error`} />
+			<input {...inputProps} id={name} name={name} value={value} onChange={handleChange} onBlur={handleUpdates} aria-describedby={`${name}-error`} />
 			<span className="error-message" role="alert" id={`${name}-error`}>
 				{errorMessage}
 			</span>

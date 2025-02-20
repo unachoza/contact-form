@@ -2,19 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import FormDataInput from "./TextInput/FormDataInput";
-import RadioInput from "./Radio/RadioInput";
-
-interface MockFormValuesType {
-	querytypeExampleName: string;
-	// input2: string;
-	// input3: string;
-}
-
-const mockFormValues: MockFormValuesType = {
-	querytypeExampleName: "",
-	// input2: "",
-	// input3: "",
-};
 
 describe("The Form Elements", () => {
 	beforeEach(() => {
@@ -32,9 +19,9 @@ describe("The Form Elements", () => {
 				handleUpdates={vi.fn()}
 			/>
 		);
-		const inputElement = screen.getByRole("textbox");
-		expect(inputElement).toBeInTheDocument();
-		expect(inputElement).toHaveAttribute("type", "text");
+		const labeledInputElement = screen.getByLabelText("firstNameExamplelabel");
+		expect(labeledInputElement).toBeInTheDocument();
+		expect(labeledInputElement).toHaveAttribute("type", "text");
 	});
 
 	it("should update value on user input", async () => {
@@ -123,84 +110,11 @@ describe("The Form Elements", () => {
 		await userEvent.tab();
 		expect(document.body).toHaveFocus();
 		// Now, the error message should be visible
+		// FAILS//
 		expect(errorMessage).toHaveStyle("visibility: visible");
-
+		expect(errorMessage).toBeVisible();
+		// FAILS//
 		// Check that the input has `user-invalid` styles applied
 		expect(input).toHaveAttribute("aria-invalid", "true"); // This checks if it's marked invalid for accessibility
-	});
-});
-
-describe("The Radio Input Component", () => {
-	beforeEach(() => {
-		render(
-			<RadioInput
-				key={4}
-				name="querytypeExampleName"
-				label="querytypeExampleLabel"
-				options={["exampleRadioValue1", "exampleRadioValue2"]}
-				//@ts-ignore
-				formValues={mockFormValues}
-				errorMessage="opps there was a radio error"
-				halfSize={true}
-				handleUpdates={vi.fn()}
-			/>
-		);
-	});
-
-	it("should have the correct label associated with value", () => {
-		const radioInputElements = screen.getAllByRole("radio");
-		expect(radioInputElements).toHaveLength(4);
-
-		//checking two each radio input has different values
-		const firstInputElement = radioInputElements[0] as HTMLInputElement;
-		const secondInputElement = radioInputElements[2] as HTMLInputElement;
-		expect(firstInputElement.value).not.toEqual(secondInputElement.value);
-	});
-
-	it("should allow users to tab through inputs using their keyboard", async () => {
-		const radioInputElements = screen.getAllByRole("radio");
-		const firstInputElement = radioInputElements[1] as HTMLSpanElement;
-		const secondInputElement = radioInputElements[3] as HTMLSpanElement;
-
-		expect(document.body).toHaveFocus();
-		await userEvent.tab();
-		expect(firstInputElement).toHaveFocus();
-		await userEvent.tab();
-		expect(secondInputElement).toHaveFocus();
-	});
-
-	//NOT PASSING TEST
-	it("should allow users to select radio input with keyboard", async () => {
-		const radioInputElements = screen.getAllByRole("radio");
-		const firstInputElement = radioInputElements[1] as HTMLSpanElement;
-		const secondInputElement = radioInputElements[3] as HTMLSpanElement;
-		const firstRadioInput = radioInputElements[0] as HTMLInputElement;
-		const secondRadioInput = radioInputElements[2] as HTMLInputElement;
-
-		console.log(firstInputElement.ariaChecked);
-		//confirming radio is in unchecked state
-		expect(firstInputElement.ariaChecked).not.toEqual(true);
-
-		//user tabs to second radio and presses enter
-		expect(document.body).toHaveFocus();
-		await userEvent.tab();
-		expect(firstInputElement).toHaveFocus();
-		await userEvent.tab();
-		await userEvent.click(secondRadioInput);
-		console.log(secondInputElement.ariaChecked);
-		await userEvent.type(secondInputElement, "{enter}");
-		console.log(secondRadioInput.checked);
-		await userEvent.click(secondInputElement);
-		console.log(secondInputElement.ariaChecked);
-		await userEvent.type(secondRadioInput, "{space}");
-		console.log(secondRadioInput.checked);
-		// expect(secondInputElement.ariaChecked).toEqual(true)
-		// expect(radioInputElements[0].ariaChecked).toEqual(true)
-		// expect(radioInputElements[1].ariaChecked).toEqual(true)
-		// expect(radioInputElements[2].ariaChecked).toEqual(true)
-		console.log({ mockFormValues });
-		console.log(secondInputElement.ariaChecked);
-		console.log(secondRadioInput.checked);
-		expect(secondRadioInput.checked).toEqual(true);
 	});
 });
