@@ -1,6 +1,5 @@
 import { FormEvent } from "react";
 import checkSVG from "../../../assets/images/icon-checkbox-check.svg";
-import "../Form.css";
 import "./Checkbox.css";
 
 interface CheckboxProps {
@@ -16,7 +15,7 @@ const CheckboxInput = ({ label, name, errorMessage, handleUpdates }: CheckboxPro
 	return (
 		<>
 			<div className="checkbox-container">
-				<input type="checkbox" id={name} name={name} onChange={handleUpdates} aria-describedby={`${name}-error`} />
+				<input type="checkbox" id={name} name={name} onChange={handleUpdates} aria-describedby={`${name}-error`} required />
 				<span className="checkbox-check" aria-labelledby={name}>
 					<img src={checkSVG} alt="check" />
 				</span>

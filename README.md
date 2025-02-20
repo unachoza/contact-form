@@ -16,18 +16,16 @@ Users should be able to:
 -   View the optimal layout for the interface depending on their device's screen size
 -   See hover and focus states for all interactive elements on the page
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+![](./src/assets/screenshots/empty.png)
+![](./src/assets/screenshots/errors.png)
+![](./src/assets/screenshots/success.png)
 
-## My process
 
 ### Built with
 
-1. vanilla
-2. useForm
-3. zod
-4. dataform
+1. React
 
 ### What I learned
 
@@ -36,6 +34,8 @@ Users should be able to:
 -   Useful css to show user feedback before submiting the form is the css Pseudo class :invalid, but is activated on blur. Matches invalid input but only after the user interaction, such as by focusing on the control, leaving the control, or attempting to submit the form containing the invalid control.
 
 -   Keyboard interactions change when you aren't using the native radio or checkbox and use a span in it's place. MDN advises to Use the tabindex attribute if the role="radio" is used on an element that does not natively accept keyboard focus. E.g., a <div> or <span>. Likely will also need to write onKeyDown function to select the <span role="radio"/>
+
+- I tried handling client side form validations, giving immediate user feedback with :user-invalid CSS pseudo-class selectors but had trouble testing this as it's a newer css feature and not available on all browsers. When working properly, the way I implemented this CSS pseudo-class selector is by starting the error message with visibility: hidden, then changing to visibility: visible if an error is present from a required input or pattern mismatch. I like it because it gives feedback immediately when the form field loses focus instead of waiting for the form submission. However, I was not able to get those tests to pass. 
 
 ### Useful resources
 
@@ -51,10 +51,6 @@ Users should be able to:
 -   (Form Validation Youtube)[https://www.youtube.com/watch?v=EQrUGEvnCzY&ab_channel=JamesQQuick]
 -   (The Correct Way to Use Form Data in React Youtube)[https://www.youtube.com/watch?v=_QpTQrxzY8A&ab_channel=CosdenSolutions]
     -(ValidityState)[https://developer.mozilla.org/en-US/docs/Web/API/ValidityState]
-
-<!-- Code examples useForm
-https://github.com/khaduj03/front-end-mentor-challenges-part-3/blob/main/contact-form-main/src/component/form/Form.tsx
-https://www.frontendmentor.io/solutions/contact-form-main-2X4dgBQAVr -->
 
 ### Form Submission Notes
 

@@ -59,6 +59,8 @@ input[type="radio"]:checked ~ span.radio-button img {
 }
 
 /* for radio error message  */
+/* ///TODO FIX */
+/* ///ERROR this is also affecting the checkbox component TODO  */
 fieldset:has(:user-invalid) ~ .error-message {
 	visibility: visible;
 }
@@ -69,7 +71,7 @@ span.error-message {
 	visibility: hidden; /* starts hidden unless active error */
 }
 
-input:user-invalid ~ span {
+input[type="checkbox"]:user-invalid ~ span {
 	visibility: visible;
 }
 
