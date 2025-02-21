@@ -1,6 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import Toast from "../Toast/Toast";
-import CheckboxCheck from "../../assets/images/icon-checkbox-check.svg";
 import { getLabelforInput } from "../../types/utility";
 import "./HardCodedForm.css";
 
@@ -10,7 +9,6 @@ interface FormValues {
 	email: string;
 	queryType: string;
 	message: string;
-	// consent: boolean | string | null;
 }
 
 const INITIAL_FORM_VALUES: FormValues = {
@@ -19,14 +17,12 @@ const INITIAL_FORM_VALUES: FormValues = {
 	email: "",
 	queryType: "",
 	message: "",
-	// consent: null,
 };
 
 const FormMappingState = () => {
 	const [formValues, setFormValues] = useState<FormValues>(INITIAL_FORM_VALUES);
 	const [toastOpen, setToastOpen] = useState<boolean>(false);
 	const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-	const [hasConsent, setHasConsent] = useState<boolean>(false);
 
 	const handleUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { name, value } = event.currentTarget;

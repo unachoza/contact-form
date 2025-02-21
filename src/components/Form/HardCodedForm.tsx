@@ -25,7 +25,6 @@ const HardCodedForm = () => {
 	const [formValues, setFormValues] = useState<FormValues>(INITIAL_FORM_VALUES);
 	const [toastOpen, setToastOpen] = useState<boolean>(false);
 	const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-	const [hasConsent, setHasConsent] = useState<boolean>(false);
 
 	const handleUpdate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { name, value } = event.currentTarget;
@@ -129,7 +128,7 @@ const HardCodedForm = () => {
 						<input id="consent" type="checkbox" name="consent" aria-describedby="consentError" onBlur={(e) => handleUpdate(e)} required />
 						{/* //span  */}
 						{/* //role= checkbox */}
-						{hasConsent && <img src={CheckboxCheck} alt="checked consent" />}
+						<img src={CheckboxCheck} alt="checked consent" />
 						<label htmlFor="consent">I consent to being contacted by the team</label>
 						<div className="error-message" role="alert" id="consentError">
 							To submit this form, please consent to being contacted

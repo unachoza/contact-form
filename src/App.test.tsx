@@ -26,7 +26,6 @@ let mockFormValues: MockFormValuesType = {
 	messageExample: "",
 	checkboxExampleName: null,
 };
-const setStateMock = vi.fn();
 
 const handleUpdates = (e: any) => {
 	mockFormValues = { ...mockFormValues, [e.currentTarget.name]: e.currentTarget.value };
@@ -46,9 +45,6 @@ describe("App component", () => {
 			...screen.getAllByRole("radio"), // radio buttons
 			...screen.getAllByRole("checkbox"), // checkboxes
 		];
-		formElements.forEach((element) => {
-			// screen.debug(element);
-		});
 	});
 
 	//NOT PASSING TEST
@@ -144,7 +140,7 @@ describe("App component", () => {
 		};
 		render(
 			<>
-				<Toast />
+				{mockFormValues && mockIsSubmited && <Toast />}
 				<form onSubmit={handleSubmit}>
 					<FormDataInput
 						key={1}
@@ -304,7 +300,7 @@ describe("App component", () => {
 
 		render(
 			<>
-				{mockToastOpen && <Toast />}
+				{mockToastOpen && mockIsSubmitted && <Toast />}
 				<form onSubmit={handleSubmit}>
 					<FormDataInput
 						key={1}
