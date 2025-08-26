@@ -73,7 +73,7 @@ const App = () => {
 	};
 
 	return (
-		<div>
+		<>
 			{isSubmitted && toastOpen ? <Toast /> : null}
 			<form onSubmit={handleSubmit}>
 				<h1>Contact Us</h1>
@@ -82,7 +82,7 @@ const App = () => {
 				})}
 				<Button text="Submit" />
 			</form>
-		</div>
+		</>
 	);
 };
 
