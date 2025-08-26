@@ -10,6 +10,7 @@ textarea {
 	border-radius: 5px;
 	color: var(--green-900);
 	padding: 10px;
+	resize: vertical;
 }
 
 .textarea-input {

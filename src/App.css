@@ -16,7 +16,7 @@ h1 {
 	color: var(--grey-900);
 	font-size: 2rem;
 	width: 100%;
-	margin: 0;
+	margin-bottom: 2rem;
 }
 
 form {
