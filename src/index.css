@@ -31,18 +31,3 @@ body {
 	min-height: 100vh;
 }
 
-
-@media (prefers-color-scheme: light) {
-	h1 {
-		line-height: 1.1;
-	}
-	:root {
-		background-color: #ffffff;
-	}
-	a:hover {
-		color: #747bff;
-	}
-	button {
-		background-color: #f9f9f9;
-	}
-}
