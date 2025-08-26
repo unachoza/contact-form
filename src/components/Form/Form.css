@@ -1,11 +1,5 @@
-input {
-	height: 30px;
-	margin: 5px 0px;
-	padding: 10px;
-	background-color: var(--white);
-	border: solid black 1px;
-	border-radius: 5px;
-	color: black;
+label {
+	margin-bottom: .5rem;
 }
 
 input:hover,

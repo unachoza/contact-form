@@ -2,7 +2,7 @@
 .checkbox-container {
 	display: flex;
 	align-items: center;
-	margin: 10px 0px;
+	margin: 2.5rem 0;
 	width: 100%;
 }
 
